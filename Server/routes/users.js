@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Api = require('../API/api');
+import Admin from '../controller/admin/admin'
 
-router.get('/Hello',Api.Hello);
+router.get('/Hello',Admin.login);
 
 module.exports = router;

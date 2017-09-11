@@ -17,6 +17,9 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+
+    <button v-on:click = "BottomEvent">ClickMe</button>
+
   </div>
 </template>
 
@@ -27,7 +30,26 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+
+  methods:{
+    BottomEvent: function(event) {
+      alert("hello!");
+
+      let successCallback =(response) => {
+          alert('success！')  
+      }
+      let errorCallback = (json)=> {
+          alert('网络不好！请刷新网络！')
+      }
+
+      let options = {
+        params: {
+        }
+      }
+      this.$http.get('api/Hello',options).then(successCallback, errorCallback);
+    },
+  },
 }
 </script>
 

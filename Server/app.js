@@ -4,11 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var mongoose = require('mongoose');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+var connectMongo = require( 'connect-mongo');
+var session = require( 'express-session');
+var config = require('config-lite')({
+    filename: 'default',
+    config_basedir: __dirname,
+    config_dir: 'config',
+});
+var cookieParser = require( 'cookie-parser');
 
 var app = express();
 
@@ -25,17 +31,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect('mongodb://localhost:27017/myDB',function (err,db) {
-    if (err) {
-        throw new Error('Database failed to connect!');
-    } else {
-        console.log('MongoDB successfully connected on port 27017.');
-    }
-
-}) //连接本地数据库
-
 app.use('/', index);
-app.use('/users', users);
+app.use('/api', users);
+
+const MongoStore = connectMongo(session);
+app.use(cookieParser());
+app.use(session({
+    name: config.session.name,
+    secret: config.session.secret,
+    resave: true,
+    saveUninitialized: false,
+    cookie: config.session.cookie,
+    store: new MongoStore({
+        url: config.url
+    })
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
