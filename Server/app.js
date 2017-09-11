@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -22,6 +24,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect('mongodb://localhost:27017/myDB',function (err,db) {
+    if (err) {
+        throw new Error('Database failed to connect!');
+    } else {
+        console.log('MongoDB successfully connected on port 27017.');
+    }
+
+}) //连接本地数据库
 
 app.use('/', index);
 app.use('/users', users);
