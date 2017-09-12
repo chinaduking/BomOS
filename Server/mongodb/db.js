@@ -1,7 +1,11 @@
 'use strict';
 
-import mongoose from 'mongoose';
-import config from 'config-lite';
+ var mongoose = require( 'mongoose');
+var config = require('config-lite')({
+    filename: 'default',
+    config_basedir: __dirname,
+    config_dir: 'config',
+});
 mongoose.connect(config.url, {useMongoClient:true});
 mongoose.Promise = global.Promise;
 
@@ -21,4 +25,6 @@ db.on('close', function() {
     mongoose.connect(config.url, {server:{auto_reconnect:true}});
 });
 
-export default db;
+module.exports =  db;
+//export default db;
+

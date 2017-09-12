@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-import Admin from '../controller/admin/admin'
+var Admin = require( '../controller/admin/admin')
 
 router.get('/Hello',Admin.login);
 
