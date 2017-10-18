@@ -37,6 +37,7 @@ export default {
       alert("hello!");
 
       let successCallback =(response) => {
+          console.log(response)
           alert('success！')  
       }
       let errorCallback = (json)=> {
@@ -47,7 +48,7 @@ export default {
         params: {
         }
       }
-      this.$http.get('api/Hello',options).then(successCallback, errorCallback);
+      this.$http.get('api/hello',options).then(successCallback, errorCallback);
     },
   },
 }
