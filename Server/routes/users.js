@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Api = require('../API/Api');
+var Api = require('../API/api');
 
 router.post('/login',Api.Login);
 
