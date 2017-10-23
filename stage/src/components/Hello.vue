@@ -34,11 +34,9 @@ export default {
 
   methods:{
     BottomEvent: function(event) {
-      alert("hello!");
-
       let successCallback =(response) => {
           console.log(response)
-          alert('success！')  
+          alert('success！')
       }
       let errorCallback = (json)=> {
           alert('网络不好！请刷新网络！')
@@ -46,9 +44,11 @@ export default {
 
       let options = {
         params: {
+          'username': 'wangjin',
+          'password': '123456'
         }
       }
-      this.$http.get('api/hello',options).then(successCallback, errorCallback);
+      this.$http.post('api/adduser',options).then(successCallback, errorCallback);
     },
   },
 }
