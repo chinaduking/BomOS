@@ -1,11 +1,18 @@
 <template>
 	<div class="user-container">
+    <el-row class="user-header" style="background-color:#99A9BF;">
+      <el-col :span="24">
+        <div>
+            <h2 style="text-align:center;">用户管理系统</h2>
+        </div>
+      </el-col>
+    </el-row>
+
 		<el-row class="user-top">
-		 	<el-col :span="16">
+		 	<el-col :span="12">
 		  		<div class="grid-content bg-purple">
 		  			<el-form autoComplete="on" :model="addUserForm" :rules="addUserRules" ref="loginForm" label-position="left" label-width="0px"
 				      	class="card-box login-form">
-				      	<h3 class="title">添加新用户</h3>
 				      	<el-form-item prop="username">
 				        	<span class="svg-container svg-container_login">
 				          	<icon-svg icon-class="yonghuming" />
@@ -21,18 +28,18 @@
 				      	</el-form-item>
 				      	<el-form-item>
 				        	<el-button type="primary" style="width:100%;" @click.native.prevent="addUser">
-				          		添加
+				          		添加新用户
 				        	</el-button>
 				      	</el-form-item>
-				      	<div class='tips'>
-				        	<span style="margin-right:20px;color:red;" v-show=this.showinfo>{{info}}</span>
-				      	</div>
 				    </el-form>
 		  		</div>
 		  	</el-col>
-		  	<el-col :span="8">
+		  	<el-col :span="12">
 		  		<div class="grid-content bg-purple-light">
-		  			yaw
+		  			<div class="userinfo">
+              name:{{name}}
+              roles:{{roles}}
+            </div>
 		  		</div>
 			</el-col>
 		</el-row>
@@ -40,8 +47,58 @@
 		<el-row class="user-bottom">
 			<el-col :span="24">
 				<div class="grid-content-bottom bg-purple-dark">
-		  			hell0
-		  		</div>
+            <span style="margin-right:20px;color:red;" v-show=this.showuserlistInfo>{{userlistInfo}}</span>
+		  			<el-table :data="tableData" style="width: 100%" :row-class-name="tableRowClassName">
+              <el-table-column
+                label="用户名"
+                width="180">
+                <template scope="scope">
+                  <el-tag>{{ scope.row.username }}</el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="用户密码"
+                width="180">
+                <template scope="scope">
+                  <el-tag>{{ scope.row.password }}</el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="权限级别"
+                width="180">
+                <template scope="scope">
+                  <el-tag>{{ scope.row.admin }}</el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="创建日期"
+                width="180">
+                <template scope="scope">
+                  <el-icon name="time"></el-icon>
+                  <span style="margin-left: 10px">{{ scope.row.createdAt }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="最后修改日期"
+                width="180">
+                <template scope="scope">
+                  <el-icon name="time"></el-icon>
+                  <span style="margin-left: 10px">{{ scope.row.updatedAt }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column label="操作">
+                <template scope="scope">
+                  <el-button
+                    size="small"
+                    @click="handleEdit(scope.$index, scope.row)">修改密码</el-button>
+                  <el-button
+                    size="small"
+                    type="danger"
+                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+        </div>
 			</el-col>
 		</el-row>
 	</div>
@@ -49,6 +106,10 @@
 
 
 <script>
+import {getAllUser,addUser,upPasswd,delUser} from '@/api/login'
+import { getToken } from '@/utils/auth' // 验权
+import { mapGetters } from 'vuex'
+
 export default {
     data() {
     const validateUsername = (rule, value, callback) => {
@@ -74,29 +135,164 @@ export default {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
       },
-      info: '登陆失败，请检查用户名或密码',
-      showinfo: false
+
+
+      userlistInfo: '',
+      showuserlistInfo: false,
+
+      tableData:[]
     }
+  },
+  computed: {
+    ...mapGetters([
+      'name',
+      'roles'
+    ])
+  },
+
+  beforeCreate: function () {
+    getAllUser(getToken()).then(response => {
+      const data = response.data
+      if(data.success == true){
+        this.tableData = data.Result
+        this.showuserlistInfo = false
+        this.userlistInfo = ''
+      }else
+      {
+        this.userlistInfo = data.message
+        this.showuserlistInfo = true
+        console.log(data.message)
+      }
+    })
   },
 
   methods: {
+    tableRowClassName(row, index) {
+        if (index%3 === 1) {
+          return 'info-row';
+        } else if (index%3 === 2) {
+          return 'positive-row';
+        }
+        return '';
+    },
+
+    reloaddate() {
+        getAllUser(getToken()).then(response => {
+          const data = response.data
+          if(data.success == true){
+            this.tableData = data.Result
+            this.showuserlistInfo = false
+            this.userlistInfo = ''
+          }else
+          {
+            this.userlistInfo = data.message
+            this.showuserlistInfo = true
+            console.log(data.message)
+          }
+        })
+    },
+
     addUser() {
-      console.log('hello')
+      addUser(getToken(),this.addUserForm.username,this.addUserForm.password).then(response => {
+          const data = response.data
+          if(data.success == true){
+            this.$alert('新用户添加成功', '操作提示！', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$message({
+                  type: 'info',
+                  message: `账户添加成功`
+                });
+                
+                //刷新数据
+                this.reloaddate()
+              }
+            });
+          }else
+          {
+            this.$alert(data.message, '操作提示！', {
+              confirmButtonText: '确定',
+              callback: action => {
+                this.$message({
+                  type: 'info',
+                  message: `账户添加失败`
+                });
+              }
+            });
+          }
+        })
+    },
+
+    handleEdit(index,row) {
+      this.$prompt('请输入新密码', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern:  /^[a-zA-Z0-9]{6,20}$/,
+          inputErrorMessage: '密码格式不正确，密码应由6~20数字或字母组成'
+        }).then(({ value }) => {
+          upPasswd(row.username,value).then(response => {
+            const data = response.data
+            console.log(data.message)
+          })
+          this.$message({
+            type: 'success',
+            message: '你的新密码是: ' + value
+          });
+          this.reloaddate()
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
+    },
+
+    handleDelete(index,row) {
+      this.$confirm('此操作将永久删除该账户, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          delUser(row.username).then(response => {
+            const data = response.data
+            if(data.success == true)
+            {
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              });
+            }else
+            {
+              this.$message({
+                type: 'warning',
+                message: data.message
+              });
+            }
+            this.reloaddate()
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
     },
   }
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
   $bg:#2d3a4b;
   $dark_gray:#889aa4;
   $light_gray:#eee;
 
-  	.user-container{
+  .user-container{
 
-  	}
+  }
+
+  .user-bottom{
+  }
 	.el-row {
-	    margin-bottom: 20px;
 	    &:last-child {
 	      margin-bottom: 0;
 	    }
@@ -105,7 +301,7 @@ export default {
 	    border-radius: 4px;
 	}
 	.bg-purple-dark {
-	    background: #99a9bf;
+	    background: #F9FAFC;
 	}
 	.bg-purple {
    		background: #d3dce6;
@@ -115,7 +311,7 @@ export default {
   	}
   	.grid-content {
 	    border-radius: 4px;
-	    height: 300px;
+	    height: 250px;
 	}
 
 	.grid-content-bottom {
@@ -152,20 +348,15 @@ export default {
         font-size: 20px;
       }
     }
-    .title {
-      font-size: 26px;
-      font-weight: 400;
-      color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
-      font-weight: bold;
-    }
     .login-form {
       left: 0;
       right: 0;
       width: 400px;
       padding: 15px 15px 15px 35px;
-     
+
+    }
+    .el-form{
+      margin: 0px auto;
     }
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -177,5 +368,20 @@ export default {
       position: absolute;
       right: 35px;
       bottom: 28px;
+    }
+
+    .el-table .info-row {
+      background: #c9e5f5;
+    }
+
+    .el-table .positive-row {
+      background: #e2f0e4;
+    }
+
+    .userinfo{
+      margin: 0px auto;
+      width:400px;
+      height:300px;
+      background-color:red;
     }
 </style>
