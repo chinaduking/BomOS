@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b568048-4d86-4b96-9995-f3c17f5e4d6a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/API/api.js" afterPath="$PROJECT_DIR$/Server/API/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/api/login.js" afterPath="$PROJECT_DIR$/front/src/api/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/login/index.vue" afterPath="$PROJECT_DIR$/front/src/views/login/index.vue" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/front/src/views/dashboard/index.vue" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/router/index.js" afterPath="$PROJECT_DIR$/front/src/router/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/page/user.vue" afterPath="$PROJECT_DIR$/front/src/views/page/user.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,7 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/API/api.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -42,20 +42,21 @@
       <file leaf-file-name="user.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front/src/views/page/user.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
+            <state relative-caret-position="665">
               <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding>
-                <marker date="1508756887210" expanded="true" signature="10142:10157" ph="..." />
+                <marker date="1508921466147" expanded="true" signature="11451:11458" ph="{...}" />
+                <marker date="1508921466147" expanded="true" signature="11451:11466" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="418">
+              <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -129,8 +130,8 @@
     <handled-path value="$PROJECT_DIR$/front/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2071" />
-    <option name="y" value="113" />
+    <option name="x" value="2131" />
+    <option name="y" value="-14" />
     <option name="width" value="1537" />
     <option name="height" value="1047" />
   </component>
@@ -149,8 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,16 +162,12 @@
               <item name="BomOS" type="462c0819:PsiDirectoryNode" />
               <item name="Server" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,11 +237,14 @@
       <workItem from="1508486123482" duration="1307000" />
       <workItem from="1508723511823" duration="293000" />
       <workItem from="1508724819101" duration="8547000" />
+      <workItem from="1508829181523" duration="329000" />
+      <workItem from="1508837860928" duration="11000" />
+      <workItem from="1508899074812" duration="1552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68259000" />
+    <option name="totallyTimeSpent" value="70151000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -373,41 +371,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stage/config/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage/src/views/login/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stage/src/components/Hello.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="44" column="21" lean-forward="false" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stage/config/index.js" />
+    <entry file="file://$PROJECT_DIR$/stage/src/views/login/index.vue" />
+    <entry file="file://$PROJECT_DIR$/stage/src/router/index.js" />
+    <entry file="file://$PROJECT_DIR$/stage/src/main.js" />
+    <entry file="file://$PROJECT_DIR$/stage/src/components/Hello.vue" />
     <entry file="file://$PROJECT_DIR$/vueAdmin-template-master/src/api/login.js" />
     <entry file="file://$PROJECT_DIR$/vueAdmin-template-master/src/store/getters.js" />
     <entry file="file://$PROJECT_DIR$/vueAdmin-template-master/src/store/index.js" />
@@ -440,19 +408,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/src/views/page/user.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="665">
           <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
           <folding>
-            <marker date="1508756887210" expanded="true" signature="10142:10157" ph="..." />
+            <marker date="1508921466147" expanded="true" signature="11451:11458" ph="{...}" />
+            <marker date="1508921466147" expanded="true" signature="11451:11466" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -460,6 +421,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="70" lean-forward="false" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
           <folding />
         </state>
       </provider>

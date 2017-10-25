@@ -21,10 +21,10 @@ export const constantRouterMap = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
-    name: 'Dashboard',
-    hidden: true,
-    children: [{ path: 'dashboard', component: _import('dashboard/index') }]
+    redirect: '/home',
+    name: 'Home',
+    hidden: true, 
+    children: [{ path: 'home',component: _import('home/index') }]
   },
 
   {
@@ -34,7 +34,8 @@ export const constantRouterMap = [
     name: '菜单',
     icon: 'zujian',
     children: [
-      { path: 'index', name: 'Form', icon: 'zonghe', component: _import('page/form') },
+      //{ path: 'index', name: 'Form', icon: 'zonghe', component: _import('page/form') },
+      { path: 'stockcontrol', name: '库存管理', icon: 'zonghe', component: _import('page/stockcontrol') },
       { path: 'user', name: '用户管理', icon: 'zonghe', component: _import('page/user') }
     ]
   },
@@ -42,11 +43,23 @@ export const constantRouterMap = [
   {
     path: '/table',
     component: Layout,
-    redirect: '/table/index',
+    redirect: 'noredirect',
+    name: '表单',
     icon: 'tubiao',
-    noDropdown: true,
-    children: [{ path: 'index', name: 'Table', component: _import('table/index'), meta: { role: ['admin'] }}]
+    children: [
+      { path: 'stockform', name: '库存表', icon: 'zonghe', component: _import('table/stockform') },
+      { path: 'filledshortform', name: '缺料表', icon: 'zonghe', component: _import('table/filledshortform') }
+    ]
   },
+
+  // {
+  //   path: '/table',
+  //   component: Layout,
+  //   redirect: '/table/index',
+  //   icon: 'tubiao',
+  //   noDropdown: true,
+  //   children: [{ path: 'index', name: 'Table', component: _import('table/index'), meta: { role: ['admin'] }}]
+  // },
 
   { path: '*', redirect: '/404', hidden: true }
 ]

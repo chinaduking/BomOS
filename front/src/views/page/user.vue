@@ -36,9 +36,15 @@
 		  	</el-col>
 		  	<el-col :span="12">
 		  		<div class="grid-content bg-purple-light">
-		  			<div class="userinfo">
-              name:{{name}}
-              roles:{{roles}}
+		  			<div class="user-content">
+              <div class="user-info">
+                <h2 style="text-align:center;">当前登陆用户信息</h2>
+                <h3 style="padding-left: 20px;"><el-tag type="primary">当前登录用户:</el-tag>  {{name}}</h3>
+                <h3 style="padding-left: 20px;"><el-tag type="primary">当前登录用户角色:</el-tag>  {{roles}}</h3>
+                <div style="margin: 20px 100px;width:100%;">
+                  <el-button  type="primary" style="width:50%;" @click="EditPasswd(name)">修改当前用户密码</el-button>
+                </div>
+              </div>
             </div>
 		  		</div>
 			</el-col>
@@ -65,26 +71,34 @@
               </el-table-column>
               <el-table-column
                 label="权限级别"
-                width="180">
+                width="120">
                 <template scope="scope">
                   <el-tag>{{ scope.row.admin }}</el-tag>
                 </template>
               </el-table-column>
               <el-table-column
+                prop="createdAt"  
                 label="创建日期"
-                width="180">
+                :formatter="dateFormat"
+                width="210">
+                <!--
                 <template scope="scope">
                   <el-icon name="time"></el-icon>
                   <span style="margin-left: 10px">{{ scope.row.createdAt }}</span>
                 </template>
+                -->
               </el-table-column>
               <el-table-column
+                prop="updatedAt"
                 label="最后修改日期"
-                width="180">
+                :formatter="dateFormat"
+                width="210">
+                <!--
                 <template scope="scope">
                   <el-icon name="time"></el-icon>
                   <span style="margin-left: 10px">{{ scope.row.updatedAt }}</span>
                 </template>
+                -->
               </el-table-column>
               <el-table-column label="操作">
                 <template scope="scope">
@@ -150,20 +164,8 @@ export default {
     ])
   },
 
-  beforeCreate: function () {
-    getAllUser(getToken()).then(response => {
-      const data = response.data
-      if(data.success == true){
-        this.tableData = data.Result
-        this.showuserlistInfo = false
-        this.userlistInfo = ''
-      }else
-      {
-        this.userlistInfo = data.message
-        this.showuserlistInfo = true
-        console.log(data.message)
-      }
-    })
+  created: function () {
+    this.reloaddate()
   },
 
   methods: {
@@ -174,6 +176,12 @@ export default {
           return 'positive-row';
         }
         return '';
+    },
+
+    dateFormat:function(row, column) {
+      var date = row[column.property]
+      var newDate = new Date(date)
+      return newDate.toLocaleString()
     },
 
     reloaddate() {
@@ -247,6 +255,30 @@ export default {
         });
     },
 
+    EditPasswd(name) {
+      this.$prompt('请输入新密码', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern:  /^[a-zA-Z0-9]{6,20}$/,
+          inputErrorMessage: '密码格式不正确，密码应由6~20数字或字母组成'
+        }).then(({ value }) => {
+          upPasswd(name,value).then(response => {
+            const data = response.data
+            console.log(data.message)
+          })
+          this.$message({
+            type: 'success',
+            message: '你的新密码是: ' + value
+          });
+          this.reloaddate()
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
+    },
+
     handleDelete(index,row) {
       this.$confirm('此操作将永久删除该账户, 是否继续?', '提示', {
           confirmButtonText: '确定',
@@ -293,6 +325,7 @@ export default {
   .user-bottom{
   }
 	.el-row {
+      padding:20px 60px;
 	    &:last-child {
 	      margin-bottom: 0;
 	    }
@@ -378,10 +411,15 @@ export default {
       background: #e2f0e4;
     }
 
-    .userinfo{
+    .user-content{
+      padding: 10px 10px;
       margin: 0px auto;
-      width:400px;
-      height:300px;
-      background-color:red;
+      width: 400px;
+      height:250px;
+    }
+
+    .user-info{
+      border: 2px solid #c9e5f5;
+      border-radius: 5px;
     }
 </style>
