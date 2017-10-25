@@ -4,11 +4,13 @@ var Api = require('../API/api');
 
 router.post('/login',Api.Login);
 router.post('/logout',Api.Logout);
-router.get('/info',Api.GetInfo);
 
+router.get('/info',Api.GetInfo);
 router.get('/getalluser',Api.getAllUser);
 router.post('/adduser',Api.addUser);
 router.post('/deluser',Api.delUser);
 router.post('/uppasswd',Api.upPasswd);
+
+router.post('/upfileaddbom',Api.upFileAddBom);
 
 module.exports = router;

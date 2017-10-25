@@ -1,8 +1,42 @@
 var jwt = require('jwt-simple');
+var multiparty = require('multiparty');
+var fs = require("fs");
+var util = require('util');
 var secret = 'duking'
 
 var API = {
+    //----------------------------------登陆登出管理----------------------------------------------
+    Login: function(req,res) {
+        var username = req.body.username;
+        var password = req.body.password;
+        req.models.t_user.find().where({'username':username}).where({'password':password}).exec(function(err,result) {
+            if(result != '') {
+                var token = jwt.encode({
+                    name: username,
+                    exp:Math.floor(Date.now()/1000) + 24 * 60 * 60//1 hours
+                },secret);
 
+                console.log(token);
+
+                res.json({
+                    success: true,
+                    message: 'Enjoy your token!',
+                    token: token
+                });
+            }else{
+                res.json({ success: false, message: '认证失败，账号或密码错误' ,token: null});
+            }
+
+
+        });
+    },
+
+    Logout: function(req,res) {
+        "use strict";
+        res.json({message:'Logout'})
+    },
+
+    //------------------------------------用户管理--------------------------------------------
     getAllUser: function getAllUser(req,res) {
         var token = req.query.token;
         var decoded = jwt.decode(token,secret)
@@ -74,36 +108,6 @@ var API = {
         });
     },
 
-    Login: function(req,res) {
-        var username = req.body.username;
-        var password = req.body.password;
-        req.models.t_user.find().where({'username':username}).where({'password':password}).exec(function(err,result) {
-            if(result != '') {
-                var token = jwt.encode({
-                    name: username,
-                    exp:Math.floor(Date.now()/1000) + 24 * 60 * 60//1 hours
-                },secret);
-
-                console.log(token);
-
-                res.json({
-                    success: true,
-                    message: 'Enjoy your token!',
-                    token: token
-                });
-            }else{
-                res.json({ success: false, message: '认证失败，账号或密码错误' ,token: null});
-            }
-
-
-        });
-    },
-
-    Logout: function(req,res) {
-        "use strict";
-        res.json({message:'Logout'})
-    },
-
     GetInfo: function (req,res) {
         var token = req.query.token;
         var decoded = jwt.decode(token,secret)
@@ -127,7 +131,41 @@ var API = {
                 res.json({role:null,name:null,avatar:null})
             }
         })
-    }
+    },
+
+    //------------------------------------文件上传管理--------------------------------------------
+    upFileAddBom: function (req,res) {
+        //生成multiparty对象，并配置上传目标路径
+        var form = new multiparty.Form();
+        //设置编码
+        form.encoding = 'utf-8';
+        //设置文件存储路径
+        form.uploadDir = "../uploads";
+        //设置单文件大小限制
+        form.maxFilesSize = 2 * 1024 * 1024;
+
+        //上传完成后处理
+        form.parse(req, function(err, fields, files) {
+            var date = new Date().getTime().toString();
+            console.log(date)
+            var inputFile = files.file[0];
+            var uploadedPath = inputFile.path;
+            var dstPath = '../uploads/' + date + '_' + inputFile.originalFilename;
+            console.log(uploadedPath,dstPath)
+            fs.rename(uploadedPath, dstPath, function(err) {
+                if(err){
+                    console.log('rename error: ' + err);
+                } else {
+                    console.log('rename ok');
+                }
+            });
+
+            res.writeHead(200, {'content-type': 'text/plain'});
+            res.write('received upload:\n\n');
+            res.end(util.inspect({fields: fields, files: files}));
+        })
+    },
+
 }
 
 module.exports =  API;
