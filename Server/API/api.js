@@ -1,6 +1,7 @@
 var jwt = require('jwt-simple');
 var multiparty = require('multiparty');
 var fs = require("fs");
+var XLSX = require('xlsx')
 var util = require('util');
 var secret = 'duking'
 
@@ -151,12 +152,55 @@ var API = {
             var inputFile = files.file[0];
             var uploadedPath = inputFile.path;
             var dstPath = '../uploads/' + date + '_' + inputFile.originalFilename;
-            console.log(uploadedPath,dstPath)
             fs.rename(uploadedPath, dstPath, function(err) {
                 if(err){
                     console.log('rename error: ' + err);
                 } else {
-                    console.log('rename ok');
+                    try {
+                        var readFile = XLSX.readFile(dstPath);
+                        readFile.SheetNames.forEach(function (sheetName) {
+                            var readSheet = readFile.Sheets[sheetName]
+                            var ref = readSheet['!ref']
+                            var rowNum = ref.substring(4,5)
+                            console.log(rowNum)
+                            for(var i=2;i<=rowNum;i++){
+                                var Mfr_Value = readSheet['A'+ i.toString()].v
+                                var Mfr = readSheet['B'+ i.toString()].v
+                                var Num = readSheet['C'+ i.toString()].v
+                                var Waring_Value = readSheet['D'+ i.toString()].v
+                                var EncodeNum = readSheet['E'+ i.toString()].v
+                                var Price = readSheet['F'+ i.toString()].v
+                                var Remark = readSheet['G'+ i.toString()].v
+
+                                var Bom = {
+                                    Mfr_Value:Mfr_Value,
+                                    Mfr:Mfr,
+                                    Num:Num,
+                                    Waring_Value: Waring_Value,
+                                    EncodeNum:EncodeNum,
+                                    Price:Price,
+                                    Remark:Remark
+                                }
+
+                                var QyeryFinishFlg = false
+                                req.models.t_bom.find().where({'Mfr_Value':Bom.Mfr_Value}).exec(function(err,result) {
+                                    if(result != ''){
+                                       console.log('物料已存在')
+                                        QyeryFinishFlg = true
+                                    }else {
+                                        req.models.t_bom.create(Bom).exec(function (err, result) {
+                                            console.log(Bom)
+                                            QyeryFinishFlg = true
+                                        });
+                                    }
+                                });
+                                while(!QyeryFinishFlg);
+                            }
+                        })
+                    }catch (err) {
+                        res.json({err:err})
+                    }
+
                 }
             });
 
