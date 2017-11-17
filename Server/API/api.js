@@ -4,6 +4,7 @@ var fs = require("fs");
 var XLSX = require('xlsx')
 var util = require('util');
 var secret = 'duking'
+var Util = require('../util/util');
 
 var API = {
     //----------------------------------登陆登出管理----------------------------------------------
@@ -141,17 +142,16 @@ var API = {
         //设置编码
         form.encoding = 'utf-8';
         //设置文件存储路径
-        form.uploadDir = "../uploads";
+        form.uploadDir = "../uploads/addbom/";
         //设置单文件大小限制
         form.maxFilesSize = 2 * 1024 * 1024;
 
         //上传完成后处理
         form.parse(req, function(err, fields, files) {
             var date = new Date().getTime().toString();
-            console.log(date)
             var inputFile = files.file[0];
             var uploadedPath = inputFile.path;
-            var dstPath = '../uploads/' + date + '_' + inputFile.originalFilename;
+            var dstPath = '../uploads/addbom/' + date + '_' + inputFile.originalFilename;
             fs.rename(uploadedPath, dstPath, function(err) {
                 if(err){
                     console.log('rename error: ' + err);
@@ -161,46 +161,12 @@ var API = {
                         readFile.SheetNames.forEach(function (sheetName) {
                             var readSheet = readFile.Sheets[sheetName]
                             var ref = readSheet['!ref']
-                            var rowNum = ref.substring(4,5)
-                            console.log(rowNum)
-                            for(var i=2;i<=rowNum;i++){
-                                var Mfr_Value = readSheet['A'+ i.toString()].v
-                                var Mfr = readSheet['B'+ i.toString()].v
-                                var Num = readSheet['C'+ i.toString()].v
-                                var Waring_Value = readSheet['D'+ i.toString()].v
-                                var EncodeNum = readSheet['E'+ i.toString()].v
-                                var Price = readSheet['F'+ i.toString()].v
-                                var Remark = readSheet['G'+ i.toString()].v
-
-                                var Bom = {
-                                    Mfr_Value:Mfr_Value,
-                                    Mfr:Mfr,
-                                    Num:Num,
-                                    Waring_Value: Waring_Value,
-                                    EncodeNum:EncodeNum,
-                                    Price:Price,
-                                    Remark:Remark
-                                }
-
-                                var QyeryFinishFlg = false
-                                req.models.t_bom.find().where({'Mfr_Value':Bom.Mfr_Value}).exec(function(err,result) {
-                                    if(result != ''){
-                                       console.log('物料已存在')
-                                        QyeryFinishFlg = true
-                                    }else {
-                                        req.models.t_bom.create(Bom).exec(function (err, result) {
-                                            console.log(Bom)
-                                            QyeryFinishFlg = true
-                                        });
-                                    }
-                                });
-                                while(!QyeryFinishFlg);
-                            }
+                            var rowNum = ref.substring(4)
+                            Util.MysqlAddBom(req,readSheet,2,rowNum);
                         })
                     }catch (err) {
                         res.json({err:err})
                     }
-
                 }
             });
 
@@ -210,6 +176,176 @@ var API = {
         })
     },
 
+    upFileCompareBom: function (req,res) {
+        //生成multiparty对象，并配置上传目标路径
+        var form = new multiparty.Form();
+        //设置编码
+        form.encoding = 'utf-8';
+        //设置文件存储路径
+        form.uploadDir = "../uploads/compare/";
+        //设置单文件大小限制
+        form.maxFilesSize = 2 * 1024 * 1024;
+
+        //上传完成后处理
+        form.parse(req, function(err, fields, files) {
+            var date = new Date().getTime().toString();
+            var inputFile = files.file[0];
+            var uploadedPath = inputFile.path;
+            var dstPath = '../uploads/compare/' + date + '_' + inputFile.originalFilename;
+            fs.rename(uploadedPath, dstPath, function(err) {
+                if(err){
+                    console.log('rename error: ' + err);
+                } else {
+                    try {
+                        var readFile = XLSX.readFile(dstPath);
+                        readFile.SheetNames.forEach(function (sheetName) {
+                            var readSheet = readFile.Sheets[sheetName]
+                            var ref = readSheet['!ref']
+                            var rowNum = ref.substring(4)
+                            var OutTable = []
+                            Util.MysqlCompareBom(req,readSheet,15,rowNum,OutTable,res);
+                        })
+                    }catch (err) {
+                        res.json({err:err})
+                    }
+                }
+            });
+        })
+    },
+
+    upFileAddBomNumber: function (req,res) {
+        //生成multiparty对象，并配置上传目标路径
+        var form = new multiparty.Form();
+        //设置编码
+        form.encoding = 'utf-8';
+        //设置文件存储路径
+        form.uploadDir = "../uploads/addbomnum/";
+        //设置单文件大小限制
+        form.maxFilesSize = 2 * 1024 * 1024;
+
+        //上传完成后处理
+        form.parse(req, function(err, fields, files) {
+            var date = new Date().getTime().toString();
+            var inputFile = files.file[0];
+            var uploadedPath = inputFile.path;
+            var dstPath = '../uploads/addbomnum/' + date + '_' + inputFile.originalFilename;
+            fs.rename(uploadedPath, dstPath, function(err) {
+                if(err){
+                    console.log('rename error: ' + err);
+                } else {
+                    try {
+                        var readFile = XLSX.readFile(dstPath);
+                        readFile.SheetNames.forEach(function (sheetName) {
+                            var readSheet = readFile.Sheets[sheetName]
+                            var ref = readSheet['!ref']
+                            var rowNum = ref.substring(4)
+                            Util.MysqlAddBomNum(req,readSheet,2,rowNum,res);
+                        })
+                    }catch (err) {
+                        res.json({err:err})
+                    }
+                }
+            });
+        })
+    },
+
+    upFileSubBomNum: function (req,res) {
+        //生成multiparty对象，并配置上传目标路径
+        var form = new multiparty.Form();
+        //设置编码
+        form.encoding = 'utf-8';
+        //设置文件存储路径
+        form.uploadDir = "../uploads/subbomnum/";
+        //设置单文件大小限制
+        form.maxFilesSize = 2 * 1024 * 1024;
+
+        //上传完成后处理
+        form.parse(req, function(err, fields, files) {
+            var date = new Date().getTime().toString();
+            var inputFile = files.file[0];
+            var uploadedPath = inputFile.path;
+            var dstPath = '../uploads/subbomnum/' + date + '_' + inputFile.originalFilename;
+            fs.rename(uploadedPath, dstPath, function(err) {
+                if(err){
+                    console.log('rename error: ' + err);
+                } else {
+                    try {
+                        var readFile = XLSX.readFile(dstPath);
+                        readFile.SheetNames.forEach(function (sheetName) {
+                            var readSheet = readFile.Sheets[sheetName]
+                            var ref = readSheet['!ref']
+                            var rowNum = ref.substring(4)
+                            Util.MysqlSubBomNum(req,readSheet,15,rowNum,res);
+                        })
+                    }catch (err) {
+                        res.json({err:err})
+                    }
+                }
+            });
+        })
+    },
+
+
+
+    //------------------------------------BOM管理--------------------------------------------
+    getBomlist: function (req,res) {
+        req.models.t_bom.find().exec(function(err,result) {
+            "use strict";
+            res.json({success: true,Result: result});
+        });
+    },
+
+    delBom: function (req,res) {
+        var token = req.body.token;
+        var Id = req.body.id;
+        var decoded = jwt.decode(token,secret)
+        user = decoded.name
+
+        req.models.t_user.find().where({'username':user}).exec(function(err,result) {
+            "use strict";
+            if(result [0].admin ==  1) {
+                req.models.t_bom.destroy(Id).exec(function(err,result) {
+                    res.json({ success: true, message: 'BOM删除成功'});
+                });
+            }else{
+                res.json({ success: false, message: '非超级管理员无权删除BOM'});
+            }
+        })
+    },
+
+    upBom: function (req,res) {
+        var token = req.body.token;
+        var form = req.body.form;
+        var decoded = jwt.decode(token,secret)
+        user = decoded.name
+
+        req.models.t_user.find().where({'username':user}).exec(function(err,result) {
+            "use strict";
+            if(result [0].admin ==  1) {
+                req.models.t_bom.update({'ID':form.Id},{'Mfr_Value':form.Mfr_Value,'Mfr':form.Mfr,'Num':form.Num,'Waring_Value':form.Waring_Value,'EncodeNum':form.EncodeNum,'Price':form.Price,'Remark':form.Remark}).exec(function(err,result) {
+                    res.json({ success: true, message: 'BOM更新成功'});
+                });
+            }else{
+                res.json({ success: false, message: '非超级管理员无权更新BOM'});
+            }
+        })
+    },
+
+    SearchBomByMfrValue: function (req,res) {
+        var MfrValue = req.query.MfrValue;
+        req.models.t_bom.find({'Mfr_Value':{'like':'%'+MfrValue+'%'}}).exec(function(err,result) {
+            "use strict";
+            res.json({ success: true, Result: result});
+        })
+    },
+
+    SearchBomByEncodeNum: function (req,res) {
+        var EncodeNum = req.query.EncodeNum;
+        req.models.t_bom.find().where({'EncodeNum':EncodeNum}).exec(function(err,result) {
+            "use strict";
+            res.json({ success: true, Result: result});
+        })
+    },
 }
 
 module.exports =  API;

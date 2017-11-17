@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<h1>this is filed short form</h1>
-		<h2>实现显示当前库存低的物料的详细信息</h2>
+		<el-row class="user-header" style="background-color:#A9A9BF;">
+	      <el-col :span="24">
+	        <div>
+	            <h2 style="text-align:center;">库存缺料表单</h2>
+	        </div>
+	      </el-col>
+	    </el-row>
 	</div>
 </template>
