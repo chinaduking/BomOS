@@ -48,7 +48,9 @@ export const constantRouterMap = [
     icon: 'tubiao',
     children: [
       { path: 'stockform', name: '库存表', icon: 'zonghe', component: _import('table/stockform') },
-      { path: 'filledshortform', name: '缺料表', icon: 'zonghe', component: _import('table/filledshortform') }
+      { path: 'filledshortform', name: '缺料表', icon: 'zonghe', component: _import('table/filledshortform') },
+      { path: 'addrecord', name: '入库记录', icon: 'zonghe', component: _import('table/addrecord') },
+      { path: 'subrecord', name: '出库记录', icon: 'zonghe', component: _import('table/subrecord') }
     ]
   },
 

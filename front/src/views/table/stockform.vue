@@ -10,17 +10,17 @@
 
 	    <el-row class="serach">
 	      <el-col :span="12">
-			<div style="margin: 20px 50px;">
-			  <el-input placeholder="请输入Mfr_P/N&Value进行模糊搜索" v-model="searchform.Mfr_Value">
-			  	<el-button slot="append" icon="search" @click="MfrValueSerach()"></el-button>
+			<div style="margin: 20px auto;width:480px;">
+			  <el-input placeholder="请输入Mfr_P/N&Value进行模糊搜索" v-model="searchform.Mfr_Value" style="width:400px;">
 			  </el-input>
+			  <el-button icon="search" @click="MfrValueSerach()"></el-button>
 			</div>
 	      </el-col>
 	      <el-col :span="12">
-			<div style="margin: 15px 50px;">
-			  <el-input placeholder="请输入编号进行精准搜索" v-model="searchform.EncodeNum">
-			    <el-button slot="append" icon="search" @click="EncodeNumSerach()"></el-button>
+			<div style="margin: 20px auto;width:480px;">
+			  <el-input placeholder="请输入编号进行精准搜索" v-model="searchform.EncodeNum" style="width:400px;">
 			  </el-input>
+			  <el-button icon="search" @click="EncodeNumSerach()"></el-button>
 			</div>
 	      </el-col>
 	    </el-row>

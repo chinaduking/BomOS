@@ -1,6 +1,6 @@
 
 var Util = {
-    MysqlAddBom:function (req,readSheet,num,rownum) {
+    MysqlAddBom:function (req,readSheet,num,rownum,res) {
         i= num;
         var Mfr_Value = readSheet['A'+ i.toString()].v
         var Mfr = readSheet['B'+ i.toString()].v
@@ -19,12 +19,11 @@ var Util = {
             Price:Price,
             Remark:Remark
         }
-
         req.models.t_bom.find().where({'Mfr_Value':Bom.Mfr_Value}).exec(function(err,result) {
             if(result != ''){
                 i++;
                 if(i<=rownum) {
-                    Util.MysqlAddBom(req, readSheet, i, rownum);
+                    Util.MysqlAddBom(req, readSheet, i, rownum,res);
                 }else{
                     res.json({ success: true, message: 'BOM数据库更新成功'});
                 }
@@ -32,8 +31,9 @@ var Util = {
                 req.models.t_bom.create(Bom).exec(function (err, result) {
                     i++;
                     if(i<=rownum) {
-                        Util.MysqlAddBom(req, readSheet, i, rownum);
+                        Util.MysqlAddBom(req, readSheet, i, rownum,res);
                     }else {
+                        console.log('test................222..')
                         res.json({ success: true, message: 'BOM数据库更新成功'});
                     }
                 });
@@ -115,18 +115,26 @@ var Util = {
                 req.models.t_bom.update({'Mfr_Value':Mfr_Value},{'Num':upNum}).exec(function(err,result) {
                     i++;
                     if(i<=rownum) {
-                        Util.MysqlAddBomNum(req, readSheet, i, rownum,res);
+                        req.models.t_addbom.create(Bom).exec(function (err, result) {
+                            Util.MysqlAddBomNum(req, readSheet, i, rownum, res);
+                        })
                     }else{
-                        res.json({ success: true, message: 'BOM数据库更新成功'});
+                        req.models.t_addbom.create(Bom).exec(function (err, result) {
+                            res.json({ success: true, message: 'BOM数据库更新成功'});
+                        })
                     }
                 })
             }else{
                 req.models.t_bom.create(Bom).exec(function (err, result) {
                     i++;
                     if(i<=rownum) {
-                        Util.MysqlAddBomNum(req, readSheet, i, rownum,res);
+                        req.models.t_addbom.create(Bom).exec(function (err, result) {
+                            Util.MysqlAddBomNum(req, readSheet, i, rownum, res);
+                        })
                     }else {
-                        res.json({ success: true, message: 'BOM数据库更新成功'});
+                        req.models.t_addbom.create(Bom).exec(function (err, result) {
+                            res.json({ success: true, message: 'BOM数据库更新成功'});
+                        })
                     }
                 });
             }
@@ -146,13 +154,25 @@ var Util = {
         req.models.t_bom.find({Num:{'>=':Num}}).where({'Mfr_Value':SerachKey}).exec(function(err,result){
             if(result != ''){
                 var upNum = result[0].Num - Num;
-                req.models.t_bom.update({'Mfr_Value':SerachKey},{'Num':upNum}).exec(function(err,result) {
-                    i++;
-                    if(i<=rownum) {
-                        Util.MysqlSubBomNum(req, readSheet, i, rownum,res);
-                    }else{
-                        res.json({ success: true, message: 'BOM数据库更新成功'});
-                    }
+                result[0].Num = Num;
+                var Bom = {
+                    Mfr_Value:result[0].Mfr_Value,
+                    Mfr:result[0].Mfr,
+                    Num:result[0].Num,
+                    Waring_Value: result[0].Waring_Value,
+                    EncodeNum:result[0].EncodeNum,
+                    Price:result[0].Price,
+                    Remark:result[0].Remark
+                }
+                req.models.t_subbom.create(Bom).exec(function (err, result) {
+                    req.models.t_bom.update({'Mfr_Value': SerachKey}, {'Num': upNum}).exec(function (err, result) {
+                        i++;
+                        if (i <= rownum) {
+                            Util.MysqlSubBomNum(req, readSheet, i, rownum, res);
+                        } else {
+                            res.json({success: true, message: 'BOM数据库更新成功'});
+                        }
+                    })
                 })
             }else{
                 i++;

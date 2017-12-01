@@ -17,9 +17,13 @@ router.post('/upfileaddbomnum',Api.upFileAddBomNumber);
 router.post('/upfilesubbomnum',Api.upFileSubBomNum);
 
 router.get('/bomlist',Api.getBomlist);
+router.get('/shortbomlist',Api.getShortBomlist);
 router.post('/delbom',Api.delBom);
 router.post('/upbom',Api.upBom);
 router.get('/findbymfrvalue',Api.SearchBomByMfrValue);
 router.get('/findbyencodenum',Api.SearchBomByEncodeNum);
+
+router.get('/addrecordlist',Api.getAddRecordList);
+router.get('/subrecordlist',Api.getSubRecordList);
 
 module.exports = router;

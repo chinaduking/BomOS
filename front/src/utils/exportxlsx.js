@@ -113,7 +113,7 @@ _exports.exportXls = function(inputdata) {
         type : 'binary'
     };
     var wbout = XLSX.write(workbook, wopts);
-    FileSaver.saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "subbom.xlsx");
+    FileSaver.saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "缺料购买清单.xlsx");
     //XLSX.writeFile(workbook, 'output.xlsx',wopts);
     return true;
 };

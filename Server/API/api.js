@@ -162,7 +162,7 @@ var API = {
                             var readSheet = readFile.Sheets[sheetName]
                             var ref = readSheet['!ref']
                             var rowNum = ref.substring(4)
-                            Util.MysqlAddBom(req,readSheet,2,rowNum);
+                            Util.MysqlAddBom(req,readSheet,2,rowNum,res);
                         })
                     }catch (err) {
                         res.json({err:err})
@@ -170,9 +170,6 @@ var API = {
                 }
             });
 
-            res.writeHead(200, {'content-type': 'text/plain'});
-            res.write('received upload:\n\n');
-            res.end(util.inspect({fields: fields, files: files}));
         })
     },
 
@@ -295,6 +292,13 @@ var API = {
         });
     },
 
+    getShortBomlist: function (req,res) {
+        req.models.t_bom.query('SELECT * FROM t_bom WHERE Num < Waring_Value ORDER BY Num ASC',function(err,result) {
+            "use strict";
+            res.json({success: true,Result: result});
+        });
+    },
+
     delBom: function (req,res) {
         var token = req.body.token;
         var Id = req.body.id;
@@ -346,6 +350,25 @@ var API = {
             res.json({ success: true, Result: result});
         })
     },
+
+    getAddRecordList: function (req,res) {
+        var starttime = new Date(req.query.start).toLocaleString();
+        var endtime = new Date(req.query.end).toLocaleString();
+        req.models.t_addbom.find({ createdAt: { '>': starttime, '<':endtime} }).exec(function(err,result) {
+            "use strict";
+            res.json({success: true,Result: result});
+        });
+    },
+
+    getSubRecordList:function (req,res) {
+        var starttime = new Date(req.query.start).toLocaleString();
+        var endtime = new Date(req.query.end).toLocaleString();
+        console.log(starttime,endtime);
+        req.models.t_subbom.find({ createdAt: { '>': starttime, '<':endtime} }).exec(function(err,result) {
+            "use strict";
+            res.json({success: true,Result: result});
+        });
+    }
 }
 
 module.exports =  API;

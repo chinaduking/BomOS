@@ -8,6 +8,8 @@ var mysqlAdapter = require('sails-mysql');
 // models
 var User = require('../app/models/User');
 var Bom = require('../app/models/Bom');
+var AddBom = require('../app/models/AddBom');
+var SubBom = require('../app/models/SubBom');
 
 var orm = new Waterline();
 var wlconfig = {
@@ -28,6 +30,9 @@ var wlconfig = {
 };
 orm.loadCollection(User);
 orm.loadCollection(Bom);
+orm.loadCollection(AddBom);
+orm.loadCollection(SubBom);
+
 
 exports.orm = orm;
 exports.config = wlconfig;

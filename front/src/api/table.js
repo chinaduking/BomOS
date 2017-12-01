@@ -56,3 +56,32 @@ export function SearchBomByEncodeNum(EncodeNum) {
     }
   })
 }
+
+export function getShortBomList() {
+  return fetch({
+    url: '/api/shortbomlist',
+    method: 'get'
+  })
+}
+
+export function getAddRecordList(start,end) {
+  return fetch({
+    url: '/api/addrecordlist',
+    method: 'get',
+    params: {
+      start,
+      end
+    }
+  })
+}
+
+export function SubRecordSerach(start,end) {
+  return fetch({
+    url: '/api/subrecordlist',
+    method: 'get',
+    params: {
+      start,
+      end
+    }
+  })
+}
