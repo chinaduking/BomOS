@@ -153,20 +153,21 @@ var API = {
             var uploadedPath = inputFile.path;
             var dstPath = '../uploads/addbom/' + date + '_' + inputFile.originalFilename;
             fs.rename(uploadedPath, dstPath, function(err) {
-                if(err){
-                    console.log('rename error: ' + err);
-                } else {
-                    try {
-                        var readFile = XLSX.readFile(dstPath);
-                        readFile.SheetNames.forEach(function (sheetName) {
-                            var readSheet = readFile.Sheets[sheetName]
-                            var ref = readSheet['!ref']
-                            var rowNum = ref.substring(4)
-                            Util.MysqlAddBom(req,readSheet,2,rowNum,res);
-                        })
-                    }catch (err) {
-                        res.json({err:err})
+                try {
+                    var readFile = XLSX.readFile(dstPath);
+                    SheetName =  readFile.SheetNames[0]
+                    var readSheet = readFile.Sheets[SheetName]
+                    var ref = readSheet['!ref']
+                    var rowNum = ref.substring(4)
+                    if(!Util.CheckIsAddBomTable(readSheet,2,rowNum))
+                    {
+                        res.json({ success: false, message: '表格格式有误，请检查表格式'});
+                        return 0;
                     }
+                    Util.MysqlAddBom(req,readSheet,2,rowNum,res);
+                }catch (err) {
+                    console.log(err);
+                    res.json({ success: false, message: '表格格式有误，请检查表格式',err:err});
                 }
             });
 
@@ -190,21 +191,21 @@ var API = {
             var uploadedPath = inputFile.path;
             var dstPath = '../uploads/compare/' + date + '_' + inputFile.originalFilename;
             fs.rename(uploadedPath, dstPath, function(err) {
-                if(err){
-                    console.log('rename error: ' + err);
-                } else {
-                    try {
-                        var readFile = XLSX.readFile(dstPath);
-                        readFile.SheetNames.forEach(function (sheetName) {
-                            var readSheet = readFile.Sheets[sheetName]
-                            var ref = readSheet['!ref']
-                            var rowNum = ref.substring(4)
-                            var OutTable = []
-                            Util.MysqlCompareBom(req,readSheet,15,rowNum,OutTable,res);
-                        })
-                    }catch (err) {
-                        res.json({err:err})
+                try {
+                    var readFile = XLSX.readFile(dstPath);
+                    SheetName =  readFile.SheetNames[0]
+                    var readSheet = readFile.Sheets[SheetName]
+                    var ref = readSheet['!ref']
+                    var rowNum = ref.substring(4)
+                    var OutTable = []
+                    if(!Util.CheckIsCompareBomTable(readSheet,15,rowNum))
+                    {
+                        res.json({ success: false, message: '表格格式有误，请检查表格式'});
+                        return 0;
                     }
+                    Util.MysqlCompareBom(req,readSheet,15,rowNum,OutTable,res);
+                }catch (err) {
+                    res.json({ success: false, message: '表格格式有误，请检查表格式',err:err});
                 }
             });
         })
@@ -227,20 +228,20 @@ var API = {
             var uploadedPath = inputFile.path;
             var dstPath = '../uploads/addbomnum/' + date + '_' + inputFile.originalFilename;
             fs.rename(uploadedPath, dstPath, function(err) {
-                if(err){
-                    console.log('rename error: ' + err);
-                } else {
-                    try {
-                        var readFile = XLSX.readFile(dstPath);
-                        readFile.SheetNames.forEach(function (sheetName) {
-                            var readSheet = readFile.Sheets[sheetName]
-                            var ref = readSheet['!ref']
-                            var rowNum = ref.substring(4)
-                            Util.MysqlAddBomNum(req,readSheet,2,rowNum,res);
-                        })
-                    }catch (err) {
-                        res.json({err:err})
+                try {
+                    var readFile = XLSX.readFile(dstPath);
+                    SheetName =  readFile.SheetNames[0]
+                    var readSheet = readFile.Sheets[SheetName]
+                    var ref = readSheet['!ref']
+                    var rowNum = ref.substring(4)
+                    if(!Util.CheckIsAddBomTableNum(readSheet,2,rowNum))
+                    {
+                        res.json({ success: false, message: '表格格式有误，请检查表格式'});
+                        return 0;
                     }
+                    Util.MysqlAddBomNum(req,readSheet,2,rowNum,res);
+                }catch (err) {
+                    res.json({ success: false, message: '表格格式有误，请检查表格式',err:err});
                 }
             });
         })
@@ -257,26 +258,28 @@ var API = {
         form.maxFilesSize = 2 * 1024 * 1024;
 
         //上传完成后处理
-        form.parse(req, function(err, fields, files) {
+        form.parse(req, function(err, data, files) {
+            console.log(data.value);
+            var Project = data.value;
             var date = new Date().getTime().toString();
             var inputFile = files.file[0];
             var uploadedPath = inputFile.path;
             var dstPath = '../uploads/subbomnum/' + date + '_' + inputFile.originalFilename;
             fs.rename(uploadedPath, dstPath, function(err) {
-                if(err){
-                    console.log('rename error: ' + err);
-                } else {
-                    try {
-                        var readFile = XLSX.readFile(dstPath);
-                        readFile.SheetNames.forEach(function (sheetName) {
-                            var readSheet = readFile.Sheets[sheetName]
-                            var ref = readSheet['!ref']
-                            var rowNum = ref.substring(4)
-                            Util.MysqlSubBomNum(req,readSheet,15,rowNum,res);
-                        })
-                    }catch (err) {
-                        res.json({err:err})
+                try {
+                    var readFile = XLSX.readFile(dstPath);
+                    SheetName =  readFile.SheetNames[0]
+                    var readSheet = readFile.Sheets[SheetName]
+                    var ref = readSheet['!ref']
+                    var rowNum = ref.substring(4)
+                    if(!Util.CheckIsSubBomTableNum(readSheet,15,rowNum))
+                    {
+                        res.json({ success: false, message: '表格格式有误，请检查表格式'});
+                        return 0;
                     }
+                    Util.MysqlSubBomNum(req,readSheet,15,rowNum,res,Project);
+                }catch (err) {
+                    res.json({ success: false, message: '表格格式有误，请检查表格式',err:err});
                 }
             });
         })
@@ -363,11 +366,28 @@ var API = {
     getSubRecordList:function (req,res) {
         var starttime = new Date(req.query.start).toLocaleString();
         var endtime = new Date(req.query.end).toLocaleString();
-        console.log(starttime,endtime);
-        req.models.t_subbom.find({ createdAt: { '>': starttime, '<':endtime} }).exec(function(err,result) {
-            "use strict";
-            res.json({success: true,Result: result});
-        });
+        var project = req.query.project;
+        if(project != "*") {
+            req.models.t_subbom.find({
+                createdAt: {
+                    '>': starttime,
+                    '<': endtime
+                }
+            }).where({'Project': project}).exec(function (err, result) {
+                "use strict";
+                res.json({success: true, Result: result});
+            });
+        }else{
+            req.models.t_subbom.find({
+                createdAt: {
+                    '>': starttime,
+                    '<': endtime
+                }
+            }).exec(function (err, result) {
+                "use strict";
+                res.json({success: true, Result: result});
+            });
+        }
     }
 }
 

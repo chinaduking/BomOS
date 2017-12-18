@@ -20,7 +20,9 @@
 				<el-button slot="append" icon="search" @click="AddRecordSerach()"></el-button>
 			</div>
 		</el-row>
-
+		<el-row>
+			<label style="margin-top: 10px;display:block;">总价：<strong>{{totalPrice}}</strong>  元</label>
+		</el-row>
 	    <el-row>
 			<el-col :span="24">
 				<div style="margin:20px auto">
@@ -77,6 +79,7 @@ import {getAddRecordList} from '@/api/table'
   export default {
     data() {
       return {
+      	totalPrice:0,
         pickerOptions2: {
           shortcuts: [{
             text: '最近一周',
@@ -121,6 +124,12 @@ import {getAddRecordList} from '@/api/table'
 		        const data = response.data
 		        if(data.success == true){
 		           this.BomtableData = data.Result
+		           this.totalPrice = 0;
+		           var totalPriceResult = this.totalPrice;
+		           data.Result.forEach(function(data){
+		           		totalPriceResult += data.Price*data.Num;
+		           })
+		           this.totalPrice = totalPriceResult.toFixed(2);
 		        }else
 		        {
 		           console.log(data.message)

@@ -9,7 +9,15 @@
 	    </el-row>
 	    <el-row style="background-color:#D3DCE6;">
 			<div class="search-col">
-				<span class="demonstration">历史出库记录查询:</span>
+				<span class="demonstration">历史出库记录查询</span>
+				<el-select v-model="subbom.value" placeholder="请选择查询项目" style="width:350px;">
+				    <el-option
+				      	v-for="item in options"
+				      	:key="item.value"
+				      	:label="item.label"
+				      	:value="item.value">
+				    </el-option>
+				</el-select>
 				<el-date-picker
 				    v-model="inputtime"
 				    type="datetimerange"
@@ -20,11 +28,18 @@
 				<el-button slot="append" icon="search" @click="SubRecordSerach()"></el-button>
 			</div>
 		</el-row>
-
+		<el-row>
+			<label style="margin-top: 10px;display:block;">总价：<strong>{{totalPrice}}</strong>  元</label>
+		</el-row>
 	    <el-row>
 			<el-col :span="24">
 				<div style="margin:20px auto">
 		  			<el-table :data="BomtableData" style="width: 100%" :row-class-name="tableRowClassName">
+		  			  <el-table-column
+		                prop="Project"
+		                label="所属项目"
+		                width="120">
+		              </el-table-column>
 		              <el-table-column
 		                prop="Mfr_Value"
 		                label="Mfr_P/N&Value"
@@ -77,6 +92,27 @@ import {SubRecordSerach} from '@/api/table'
   export default {
     data() {
       return {
+      	totalPrice: 0,
+      	options: [
+      				{
+				          value: '*',
+				          label: '所有项目'
+				    },{
+				          value: 'APR_G1',
+				          label: 'APR_G1'
+				    }, {
+				          value: 'APR_G2',
+				          label: 'APR_G2'
+				    }, {
+				          value: 'APR_GX',
+				          label: 'APR_GX'
+				    }, {
+				          value: 'LoomoGo',
+				          label: 'LoomoGo'
+				    }],
+      	subbom:{
+				value: '*'
+		},
         pickerOptions2: {
           shortcuts: [{
             text: '最近一周',
@@ -117,10 +153,16 @@ import {SubRecordSerach} from '@/api/table'
 
 	methods: {
 		reloaddate(start,end) {
-		    SubRecordSerach(start,end).then(response => {
+		    SubRecordSerach(start,end,this.subbom.value).then(response => {
 		        const data = response.data
 		        if(data.success == true){
 		           this.BomtableData = data.Result
+		           this.totalPrice = 0;
+		           var totalPriceResult = this.totalPrice;
+		           data.Result.forEach(function(data){
+		           		totalPriceResult += data.Price * data.Num;
+		           })
+		           this.totalPrice = totalPriceResult.toFixed(2);
 		        }else
 		        {
 		           console.log(data.message)
@@ -144,7 +186,6 @@ import {SubRecordSerach} from '@/api/table'
 		},
 
 		SubRecordSerach() {
-			console.log(this.inputtime[0],this.inputtime[1])
 			this.reloaddate(this.inputtime[0],this.inputtime[1])
 		},
 	}
@@ -153,11 +194,14 @@ import {SubRecordSerach} from '@/api/table'
 
 <style type="text/css">
 	.search-col {
-		width: 600px;
+		width: 420px;
 		margin: 10px auto;
 	}
 	.demonstration{
+		display: block;
 		font-weight:bold;
+		text-align: center;
+		margin:10px auto;
 	}
 	.el-table .info-row {
       background: #c9e5f5;

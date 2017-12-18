@@ -31,7 +31,7 @@ module.exports = Waterline.Collection.extend({
         },
 
         Price: {
-            type: 'string'
+            type: 'float'
         },
         Remark: {
             type: 'string'

@@ -9,7 +9,9 @@ module.exports = Waterline.Collection.extend({
             type: 'integer',
             primaryKey:true,
         },
-
+        Project: {
+            type: 'string'
+        },
         Mfr_Value: {
             type: 'string'
         },
@@ -31,7 +33,7 @@ module.exports = Waterline.Collection.extend({
         },
 
         Price: {
-            type: 'string'
+            type: 'float'
         },
         Remark: {
             type: 'string'

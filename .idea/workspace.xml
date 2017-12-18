@@ -2,43 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b568048-4d86-4b96-9995-f3c17f5e4d6a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/models/AddBom.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/app/models/SubBom.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/0.48abd5b00c79e60cd709.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/0.48abd5b00c79e60cd709.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/2.69e4e838134de56189b6.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/2.69e4e838134de56189b6.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/3.80e61542a913f6417a9a.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/3.80e61542a913f6417a9a.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/4.45d7bd0511b9ae5ad064.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/4.45d7bd0511b9ae5ad064.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/5.26aec91ad478372f95bc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/5.26aec91ad478372f95bc.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/6.4a331c6638be73469aa3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/6.4a331c6638be73469aa3.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/7.1a55fe85f21b4a4f7357.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/7.1a55fe85f21b4a4f7357.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/8.75c285ce49fb9e4ec8df.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/8.75c285ce49fb9e4ec8df.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/app.3b363dc884ba36318521.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/app.3b363dc884ba36318521.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/manifest.8d07a42a2ca1596f2292.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/manifest.8d07a42a2ca1596f2292.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/vendor.1a1bb957f2d12670b314.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/vendor.1a1bb957f2d12670b314.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/0.1c31d4b00186f03f3a26.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/0.1c31d4b00186f03f3a26.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/1.3807d50d783124560036.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/1.3807d50d783124560036.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/2.a0dc59376c83e8b51896.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/2.a0dc59376c83e8b51896.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/3.eba6821e2c56c5707ab0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/3.eba6821e2c56c5707ab0.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/4.919b1dff58b7555fc691.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/4.919b1dff58b7555fc691.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/5.0f160e7ff8951c6abafb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/5.0f160e7ff8951c6abafb.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/6.ce94b5b1b286eecb06f3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/6.ce94b5b1b286eecb06f3.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/7.56b8ffcac67b0162fdcb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/7.56b8ffcac67b0162fdcb.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/8.2109f5171eea0e2d3d4e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/8.2109f5171eea0e2d3d4e.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/9.884a471394683a7bfc74.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/9.884a471394683a7bfc74.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/app.820f38d71072f1468bc9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/app.820f38d71072f1468bc9.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/manifest.8fa55e7b7dce8d83068e.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/public/static/js/manifest.8fa55e7b7dce8d83068e.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/API/api.js" afterPath="$PROJECT_DIR$/Server/API/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/bin/www" afterPath="$PROJECT_DIR$/Server/bin/www" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/config/waterline.js" afterPath="$PROJECT_DIR$/Server/config/waterline.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/routes/users.js" afterPath="$PROJECT_DIR$/Server/routes/users.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/app.js" afterPath="$PROJECT_DIR$/Server/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/app/models/AddBom.js" afterPath="$PROJECT_DIR$/Server/app/models/AddBom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/app/models/Bom.js" afterPath="$PROJECT_DIR$/Server/app/models/Bom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/app/models/SubBom.js" afterPath="$PROJECT_DIR$/Server/app/models/SubBom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/package-lock.json" afterPath="$PROJECT_DIR$/Server/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/package.json" afterPath="$PROJECT_DIR$/Server/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/util/util.js" afterPath="$PROJECT_DIR$/Server/util/util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/views/index.html" afterPath="$PROJECT_DIR$/Server/views/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/api/table.js" afterPath="$PROJECT_DIR$/front/src/api/table.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/router/index.js" afterPath="$PROJECT_DIR$/front/src/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/utils/exportxlsx.js" afterPath="$PROJECT_DIR$/front/src/utils/exportxlsx.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/home/index.vue" afterPath="$PROJECT_DIR$/front/src/views/home/index.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/page/stockcontrol.vue" afterPath="$PROJECT_DIR$/front/src/views/page/stockcontrol.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/table/filledshortform.vue" afterPath="$PROJECT_DIR$/front/src/views/table/filledshortform.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/table/stockform.vue" afterPath="$PROJECT_DIR$/front/src/views/table/stockform.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/table/addrecord.vue" afterPath="$PROJECT_DIR$/front/src/views/table/addrecord.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/src/views/table/subrecord.vue" afterPath="$PROJECT_DIR$/front/src/views/table/subrecord.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,28 +53,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="util.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/util/util.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="165" column="17" lean-forward="false" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/API/api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="274" column="37" lean-forward="false" selection-start-line="274" selection-start-column="37" selection-end-line="274" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -106,16 +87,18 @@
         <option value="$PROJECT_DIR$/stage/src/main.js" />
         <option value="$PROJECT_DIR$/stage/src/views/login/index.vue" />
         <option value="$PROJECT_DIR$/front/src/views/page/user.vue" />
-        <option value="$PROJECT_DIR$/Server/app.js" />
-        <option value="$PROJECT_DIR$/Server/app/models/Bom.js" />
         <option value="$PROJECT_DIR$/Server/util/exportxlsx.js" />
         <option value="$PROJECT_DIR$/Server/bin/www" />
-        <option value="$PROJECT_DIR$/Server/app/models/AddBom.js" />
-        <option value="$PROJECT_DIR$/Server/app/models/SubBom.js" />
         <option value="$PROJECT_DIR$/Server/config/waterline.js" />
         <option value="$PROJECT_DIR$/Server/routes/users.js" />
+        <option value="$PROJECT_DIR$/Server/app.js" />
+        <option value="$PROJECT_DIR$/Server/util/text" />
+        <option value="$PROJECT_DIR$/Server/app/models/AddBom.js" />
+        <option value="$PROJECT_DIR$/Server/app/models/Bom.js" />
+        <option value="$PROJECT_DIR$/Server/app/models/SubBom.js" />
         <option value="$PROJECT_DIR$/Server/API/api.js" />
         <option value="$PROJECT_DIR$/Server/util/util.js" />
+        <option value="$PROJECT_DIR$/front/src/views/home/index.vue" />
       </list>
     </option>
   </component>
@@ -142,8 +125,8 @@
     <handled-path value="$PROJECT_DIR$/front/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="1832" />
+    <option name="y" value="46" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -162,6 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -173,57 +157,33 @@
             <path>
               <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
               <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BomOS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BomOS" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,11 +267,16 @@
       <workItem from="1511747374236" duration="13531000" />
       <workItem from="1512011420927" duration="250000" />
       <workItem from="1512115648742" duration="3257000" />
+      <workItem from="1512376385211" duration="8816000" />
+      <workItem from="1512386509828" duration="498000" />
+      <workItem from="1513220321722" duration="6369000" />
+      <workItem from="1513304526162" duration="15658000" />
+      <workItem from="1513566222469" duration="5349000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162999000" />
+    <option name="totallyTimeSpent" value="199689000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,15 +288,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21232876" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1849315" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910052" sideWeight="0.50208336" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3362256" sideWeight="0.49791667" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22776572" sideWeight="0.49791667" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15509762" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45444685" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -354,8 +319,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/.babelrc" />
-    <entry file="file://$PROJECT_DIR$/Server/Controller/users.js" />
     <entry file="file://$PROJECT_DIR$/Server/node_modules/mongoose/lib/types/documentarray.js" />
     <entry file="file://$PROJECT_DIR$/Server/models/admin/admin.js" />
     <entry file="file://$PROJECT_DIR$/Server/mongodb/db.js" />
@@ -426,13 +389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/node_modules/sails-mysql/node_modules/mysql/lib/protocol/Parser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/util/exportxlsx.js" />
     <entry file="file://$PROJECT_DIR$/Server/views/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -445,13 +401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="30" column="33" lean-forward="false" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -469,24 +418,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app/models/Bom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/app/controllers/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1463">
           <caret line="77" column="1" lean-forward="false" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app/models/SubBom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -497,13 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/app/models/AddBom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-239">
-          <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -511,18 +439,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/API/api.js">
+    <entry file="file://$PROJECT_DIR$/Server/node_modules/sails-mysql/node_modules/mysql/lib/protocol/Parser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/util/text">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/models/SubBom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="274" column="37" lean-forward="false" selection-start-line="274" selection-start-column="37" selection-end-line="274" selection-end-column="37" />
-          <folding />
+          <caret line="30" column="20" lean-forward="true" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/models/Bom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="32" column="16" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app/models/AddBom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/util/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="165" column="17" lean-forward="false" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
+        <state relative-caret-position="5301">
+          <caret line="279" column="13" lean-forward="false" selection-start-line="279" selection-start-column="13" selection-end-line="279" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/API/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="202" column="78" lean-forward="false" selection-start-line="202" selection-start-column="78" selection-end-line="202" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/views/home/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding />
         </state>
       </provider>

@@ -75,13 +75,14 @@ export function getAddRecordList(start,end) {
   })
 }
 
-export function SubRecordSerach(start,end) {
+export function SubRecordSerach(start,end,project) {
   return fetch({
     url: '/api/subrecordlist',
     method: 'get',
     params: {
       start,
-      end
+      end,
+      project
     }
   })
 }
